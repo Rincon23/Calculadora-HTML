@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calculadora</title>
+    </head>
+    <body>
+        <h1>Aula Clean Code</h1>
+
+        <label for="primeiroValor">Primeiro Valor:</label>
+        <input type="text" id="primeiroValor">
+        <br><br>
+
+        <label for="segundoValor">Segundo Valor:</label>
+        <input type="text" id="segundoValor">
+        <br><br>
+
+        <input type="button" value="Somar" onclick="Calculadora('somar')">
+        <br><br>
+
+        <input type="button" value="Subtrair" onclick="Calculadora('subtrair')">
+        <br><br>
+
+        <input type="button" value="Multiplicar" onclick="Calculadora('multiplicar')">
+        <br><br>
+
+        <label for="Resultado">Resultado:</label>
+        <input type="text" id="resultado" readonly>
+
+        <script>
+            function Calculadora(tipoOperacao) {
+                var primeiroValorHTML = document.getElementById("primeiroValor").value; 
+                var segundoValorHTML = document.getElementById("segundoValor").value;
+                
+                Log('o primeiro valor é: ' + primeiroValorHTML)
+                Log('o segundo valor é: ' + segundoValorHTML)
+
+                var primeiroValor = parseInt(primeiroValorHTML)
+                var segundoValor = parseInt(segundoValorHTML)
+                var resultado = 0;
+
+                if (tipoOperacao === 'somar') {
+                    resultado = Somar(primeiroValor, segundoValor)
+                } else if(tipoOperacao === 'subtrair') {
+                    resultado = Subtrair(primeiroValor, segundoValor)
+                } else if (tipoOperacao === 'multiplicar') {
+                    resultado = Multiplicar(primeiroValor, segundoValor)
+                }
+
+                ExibirResultado(resultado);
+            }
+
+            function Log(mensagem) {
+                console.log(mensagem);
+            }
+
+
+            function Somar(numeroUm, numeroDois) {
+                return numeroUm + numeroDois;                
+            }
+
+            function Subtrair(numeroUm, numeroDois) {
+                return numeroUm - numeroDois;
+            }
+
+            function Multiplicar(numeroUm, numeroDois) {
+                return numeroUm * numeroDois;
+            }
+
+            function ExibirResultado(valor) {
+                document.getElementById("resultado").value = valor;
+            }
+        </script>
+    </body>
+</html>
